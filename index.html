@@ -19,17 +19,22 @@
       <p class="hint">Die Liste wird im Browser gespeichert. Beim nächsten Besuch bleibt sie erhalten.</p>
     </section>
 
-    <section class="card">
-      <div class="toolbar">
-        <h2>Gespeicherte Bars</h2>
-        <button id="random-button" type="button">Zufällige Bar wählen</button>
-      </div>
-      <ul id="bar-list" class="bar-list"></ul>
-    </section>
-
     <section class="card result-card" aria-live="polite">
       <h2>Gewählte Bar</h2>
       <p id="result-text" class="result-text">Noch keine Bar gewählt.</p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Gespeicherte Bars</h2>
+      </div>
+      <div class="select-row">
+        <select id="bar-select" size="5"></select>
+      </div>
+      <div class="action-row">
+        <button id="random-button" type="button">Zufällige Bar wählen</button>
+        <button id="remove-selected-button" type="button" class="remove-button">Ausgewählte Bar entfernen</button>
+      </div>
     </section>
   </main>
 
