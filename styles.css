@@ -85,28 +85,26 @@ button:disabled {
   flex-wrap: wrap;
 }
 
-.bar-list {
-  list-style: none;
+.select-row {
   margin: 16px 0 0;
-  padding: 0;
-  display: grid;
-  gap: 10px;
 }
 
-.bar-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  border: 1px solid #e5e7eb;
+select {
+  width: 100%;
+  min-height: 170px;
+  border: 1px solid #d1d5db;
   border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 1rem;
   background: #f9fafb;
+  color: #111827;
 }
 
-.bar-name {
-  margin: 0;
-  word-break: break-word;
+.action-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .remove-button {
@@ -135,5 +133,9 @@ button:disabled {
 
   button {
     width: 100%;
+  }
+
+  .action-row {
+    grid-template-columns: 1fr;
   }
 }
