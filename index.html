@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bar Zufallsgenerator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Bar Zufallsgenerator</h1>
+
+    <section class="card">
+      <label for="bar-input">Bar hinzufügen</label>
+      <div class="input-row">
+        <input id="bar-input" type="text" placeholder="Name der Bar eingeben" />
+        <button id="add-button" type="button">Hinzufügen</button>
+      </div>
+      <p class="hint">Die Liste wird im Browser gespeichert. Beim nächsten Besuch bleibt sie erhalten.</p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Gespeicherte Bars</h2>
+        <button id="random-button" type="button">Zufällige Bar wählen</button>
+      </div>
+      <ul id="bar-list" class="bar-list"></ul>
+    </section>
+
+    <section class="card result-card" aria-live="polite">
+      <h2>Gewählte Bar</h2>
+      <p id="result-text" class="result-text">Noch keine Bar gewählt.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
