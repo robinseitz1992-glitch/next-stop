@@ -1,7 +1,8 @@
 const input = document.getElementById('bar-input');
 const addButton = document.getElementById('add-button');
 const randomButton = document.getElementById('random-button');
-const barList = document.getElementById('bar-list');
+const removeSelectedButton = document.getElementById('remove-selected-button');
+const barSelect = document.getElementById('bar-select');
 const resultText = document.getElementById('result-text');
 const STORAGE_KEY = 'bar-zufallsliste';
 
@@ -17,35 +18,25 @@ function saveBars() {
 }
 
 function renderBars() {
-  barList.innerHTML = '';
+  barSelect.innerHTML = '';
 
   if (bars.length === 0) {
-    const emptyItem = document.createElement('li');
-    emptyItem.textContent = 'Keine Bars in der Liste.';
-    emptyItem.className = 'bar-item';
-    barList.appendChild(emptyItem);
+    const emptyOption = document.createElement('option');
+    emptyOption.textContent = 'Keine Bars in der Liste.';
+    emptyOption.disabled = true;
+    emptyOption.selected = true;
+    barSelect.appendChild(emptyOption);
+  } else {
+    bars.forEach((bar) => {
+      const option = document.createElement('option');
+      option.value = bar;
+      option.textContent = bar;
+      barSelect.appendChild(option);
+    });
   }
 
-  bars.forEach((bar, index) => {
-    const item = document.createElement('li');
-    item.className = 'bar-item';
-
-    const name = document.createElement('p');
-    name.textContent = bar;
-    name.className = 'bar-name';
-
-    const removeButton = document.createElement('button');
-    removeButton.type = 'button';
-    removeButton.textContent = 'Entfernen';
-    removeButton.className = 'remove-button';
-    removeButton.addEventListener('click', () => removeBar(index));
-
-    item.appendChild(name);
-    item.appendChild(removeButton);
-    barList.appendChild(item);
-  });
-
   randomButton.disabled = bars.length === 0;
+  removeSelectedButton.disabled = bars.length === 0;
 }
 
 function addBar() {
@@ -67,6 +58,12 @@ function removeBar(index) {
   saveBars();
   renderBars();
 }
+function removeSelectedBar() {
+  if (bars.length === 0) return;
+  const selectedIndex = barSelect.selectedIndex;
+  if (selectedIndex < 0 || selectedIndex >= bars.length) return;
+  removeBar(selectedIndex);
+}
 
 function chooseRandomBar() {
   if (bars.length === 0) return;
@@ -86,6 +83,7 @@ input.addEventListener('keydown', (event) => {
   }
 });
 randomButton.addEventListener('click', chooseRandomBar);
+removeSelectedButton.addEventListener('click', removeSelectedBar);
 
 loadBars();
 renderBars();
